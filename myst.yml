@@ -1,0 +1,30 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: fc35cc8c-7ca1-4358-ac6b-bf526b480e5c
+  # title:
+  # description:
+  # keywords: []
+  authors:
+    - Freek
+  # github:
+  plugins:
+    - plugins/typst_eq.mjs
+    - https://github.com/TUD-JB-Templates/JB2_plugins/releases/download/intermezzo/intermezzo.mjs
+
+
+  exports:
+    - format: typst
+      template: https://github.com/myst-templates/plain_typst_book.git 
+      output: testfile.pdf
+      id: output-pdf1
+
+  # To autogenerate a Table of Contents, run "myst init --write-toc"
+site:
+  template: book-theme
+  # options:
+  #   favicon: favicon.ico
+  #   logo: site_logo.png
+  
+  parts:
+    footer: footer.md
