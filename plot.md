@@ -21,3 +21,10 @@ plt.xlabel('x')
 plt.ylabel('sin(x)')
 plt.show()
 ```
+
+````{exercise} some title
+:label: exercise
+```{code-cell} python
+# Your code here
+```
+````

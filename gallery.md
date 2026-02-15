@@ -1,4 +1,13 @@
+---
+title: Gallery
+short_title: Title for toc
+--- 
+
 # Gallery
+
+:::{index-num} forces; addition, subtraction, decomposition
+:::
+
 :::{grid} 1 1 2 2
 ```{card} Jupyter Book 2 Workshop Template
 :link: https://jupyter-book.github.io/workshop-template/

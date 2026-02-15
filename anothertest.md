@@ -1,4 +1,6 @@
 # tabset met keuze
+```{index-num} tabset
+```
 
 ::::{tab-set}
 :enumerated: true
