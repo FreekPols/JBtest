@@ -12,3 +12,7 @@ This is the text of the exercise.
 ```
 
 and a reference to the exercise: {numref}`ex_71`.
+
+(some-sec)=
+## here is some a section
+with some texts
