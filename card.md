@@ -1,3 +1,7 @@
+---
+title: card
+---
+(card)=
 # Card
 
 Some text
@@ -8,3 +12,6 @@ Some text
 ```
 ````
 Some text
+
+## and a second section
+which should show up if the frontmatter is not breaking the stuff.
