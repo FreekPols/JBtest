@@ -59,7 +59,7 @@ site:
     - title: hotmail
       url: https://hotmail.com
     - title: internal ref
-      url: ./card.md
+      url: /card.md
     - title: conference proceedings
       url: https://wndconferentieverslagen.nl
     - title: 2000-2010
