@@ -58,10 +58,10 @@ site:
   nav: 
     - title: hotmail
       url: https://hotmail.com
-    - title: 1980-1990
-      url: https://wnd-6i6ghfucm9.live-website.com/wp-content/conferentieverslagen/70   
-    - title: 1990-2000
-      url: https://wnd-6i6ghfucm9.live-website.com/wp-content/conferentieverslagen/90
+    - title: internal ref
+      url: ./card.md
+    - title: conference proceedings
+      url: https://wndconferentieverslagen.nl
     - title: 2000-2010
       url: https://wnd-6i6ghfucm9.live-website.com/wp-content/conferentieverslagen/00
     - title: 2010-2020
