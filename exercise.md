@@ -1,3 +1,4 @@
+(ex)=
 # Exercise
 
 ```{exercise} Some exercise

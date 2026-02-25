@@ -66,7 +66,7 @@ site:
     - title: conference proceedings
       url: https://wndconferentieverslagen.nl
     - title: xref link
-      url: xref:mechanica#about
+      url: "xref:mechanica#about"
     - title: 2010-2020
       url: https://wnd-6i6ghfucm9.live-website.com/wp-content/conferentieverslagen/10
     - title:  2020-nu
