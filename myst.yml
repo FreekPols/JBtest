@@ -54,6 +54,7 @@ site:
   template: book-theme
   options:
     style: custom.css
+    folders: false
 
 
   #   favicon: favicon.ico
