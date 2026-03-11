@@ -7,7 +7,7 @@ project:
   # keywords: []
   authors:
     - Freek
-  # github:
+  github: https://github.com/FreekPols/JBtest
   plugins:
     - plugins/typst_eq.mjs
     - plugins/index_num.mjs
