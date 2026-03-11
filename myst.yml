@@ -36,6 +36,7 @@ project:
     # - file: gallery.md
     - file: inclpdf.md
     - file: numbeq.md
+    - file: wizard.md
     # - file: plot.md
     # - file: table.md
     # - file: testfile.md
