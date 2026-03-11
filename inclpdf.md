@@ -1,3 +1,6 @@
+---
+no-update-date: true
+---
 # Include pdf file
 
 <iframe src="python.pdf" width="100%" height="600px"></iframe>
