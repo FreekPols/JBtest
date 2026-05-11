@@ -1,11 +1,17 @@
 const PYODIDE_CDN = "https://cdn.jsdelivr.net/pyodide/v0.29.3/full/";
 const DEFAULT_PACKAGES = ["numpy", "pandas", "matplotlib"];
 
+
+
+
 let pyodideInstance = null;
 let loadingPromise = null;
 let loadState = "idle";
 let loadError = null;
 const runButtons = new Set();
+const height = model.get("height") || "18rem";
+const linenos = Boolean(model.get("linenos"));
+const linenoStart = Number(model.get("linenoStart") || 1);
 
 function loadScript(src) {
   return new Promise((resolve, reject) => {
@@ -276,11 +282,40 @@ function render({ model, el }) {
   controls.append(runButton, clearButton, runAllButton, restartButton);
   header.append(badge, controls);
 
-  const textarea = document.createElement("textarea");
-  textarea.className = "pyodide-editor";
-  textarea.value = code;
-  textarea.spellcheck = false;
-  textarea.setAttribute("aria-label", "Python code editor");
+const editorShell = document.createElement("div");
+editorShell.className = linenos
+  ? "pyodide-editor-shell pyodide-editor-shell-linenos"
+  : "pyodide-editor-shell";
+
+const lineNumbers = document.createElement("pre");
+lineNumbers.className = "pyodide-line-numbers";
+
+const textarea = document.createElement("textarea");
+textarea.className = "pyodide-editor";
+textarea.value = code;
+textarea.spellcheck = false;
+textarea.style.minHeight = height;
+textarea.setAttribute("aria-label", "Python code editor");
+
+function updateLineNumbers() {
+  const lines = textarea.value.split("\n").length;
+  lineNumbers.textContent = Array.from(
+    { length: lines },
+    (_, i) => i + linenoStart
+  ).join("\n");
+}
+
+textarea.addEventListener("input", updateLineNumbers);
+textarea.addEventListener("scroll", () => {
+  lineNumbers.scrollTop = textarea.scrollTop;
+});
+
+if (linenos) {
+  updateLineNumbers();
+  editorShell.append(lineNumbers, textarea);
+} else {
+  editorShell.append(textarea);
+}
 
   const statusBar = document.createElement("div");
   statusBar.className = "pyodide-status-bar";
@@ -295,7 +330,7 @@ function render({ model, el }) {
   outputArea.setAttribute("aria-live", "polite");
   outputArea.hidden = true;
 
-  wrapper.append(header, textarea, statusBar, outputArea);
+  wrapper.append(header, editorShell, statusBar, outputArea);
   el.appendChild(wrapper);
   runButtons.add(runButton);
 
