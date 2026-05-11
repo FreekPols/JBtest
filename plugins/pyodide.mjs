@@ -14,12 +14,12 @@ const pyodideDirective = {
   alias: ["pyodide", "myst:pyodide", "myst:pyodide-cell", "python-cell"],
   doc: "Render an editable Pyodide-backed Python code cell.",
   body: { type: String, required: true },
-  height: { type: String, doc: "Editor height, e.g. 18rem or 320px." },
-  linenos: { type: Boolean, doc: "Show line numbers." },
-  "lineno-start": { type: Number, doc: "First line number." },
   options: {
     id: { type: String, doc: "Optional id for the cell." },
     packages: { type: String, doc: "Comma-separated Pyodide packages." },
+    height: { type: String, doc: "Editor height, e.g. 18rem or 320px." },
+    linenos: { type: Boolean, doc: "Show line numbers." },
+    "lineno-start": { type: Number, doc: "First line number." },
   },
   run(data, vfile) {
     const code = (data.body || "").trim();

@@ -9,9 +9,6 @@ let loadingPromise = null;
 let loadState = "idle";
 let loadError = null;
 const runButtons = new Set();
-const height = model.get("height") || "18rem";
-const linenos = Boolean(model.get("linenos"));
-const linenoStart = Number(model.get("linenoStart") || 1);
 
 function loadScript(src) {
   return new Promise((resolve, reject) => {
@@ -172,7 +169,9 @@ function ensureStyles(el) {
 .pyodide-btn-runall{background:#0969da}
 .pyodide-btn-restart{color:#cf222e;font-weight:600}
 .pyodide-lang-badge{font-size:.72rem;font-weight:700;text-transform:uppercase;color:var(--color-foreground-muted,#57606a);letter-spacing:.04em}
-.pyodide-editor{box-sizing:border-box;display:block;width:100%;min-height:10rem;max-height:26rem;padding:.75rem;border:0;border-radius:0;resize:vertical;background:var(--color-background-primary,#fafbfc);color:inherit;font:inherit;line-height:1.55;tab-size:4;outline:none}
+.pyodide-editor{  box-sizing:border-box;  display:block;  width:100%;  min-height:18rem;  max-height:40rem;  padding:.75rem;  border:0;  border-radius:0;  resize:vertical;  background:transparent;  color:inherit;  font:inherit;  line-height:1.55;  tab-size:4;  outline:none;  white-space:pre;  overflow:auto;}
+.pyodide-editor-shell{display:flex; width:100%;background:var(--color-background-primary,#fafbfc);}
+.pyodide-line-numbers{  margin:0!important;padding:.75rem .5rem!important;  min-width:3rem;  text-align:right;user-select:none;  overflow:hidden;  border-right:1px solid var(--color-border,#d0d7de);  color:var(--color-foreground-muted,#57606a); background:var(--color-background-secondary,#f6f8fa)!important;  line-height:1.55;  font:inherit;}
 .pyodide-output{min-height:2.5rem;max-height:25rem;overflow:auto;padding:.7rem .75rem;border-top:1px solid var(--color-border,#d0d7de);background:var(--color-background-primary,#fff);resize:vertical}
 .pyodide-output[hidden]{display:none}
 .pyodide-output pre{margin:0 0 .4rem!important;padding:0!important;background:transparent!important;border:0!important;color:inherit!important;white-space:pre-wrap;word-break:break-word;font:inherit}
@@ -237,6 +236,10 @@ async function runAllCells() {
 function render({ model, el }) {
   const code = model.get("code") || "";
   const cellId = model.get("id") || "";
+  const height = model.get("height") || "18rem";
+  const linenos = Boolean(model.get("linenos"));
+  const linenoStart = Number(model.get("linenoStart") || 1);
+
   const packages = (model.get("packages") || "")
     .split(",")
     .map((item) => item.trim())
