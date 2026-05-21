@@ -15,7 +15,7 @@ project:
     - plugins/page-last-updated.mjs
     - plugins/pyodide.mjs
     - https://github.com/TUD-JB-Templates/JB2_plugins/releases/download/wizard-plugin/wizard.mjs
-
+    - plugins/lightbox.mjs
 
   numbering:
     true

@@ -7,10 +7,19 @@ description: Deploy your MyST site to GitLab pages.
 GitLab Pages allows you to host static HTML files online from GitLab repositories using [GitLab CI/CD](https://docs.gitlab.com/ci/).
 This page has important information for how to do so.
 
+## test for lightbox
+
+```{figure} puzzle1.png
+
+```
+
+
 ## Instructions
 
 To get setup with GitLab Pages, ensure that your repository is hosted in GitLab and you are in the root of the Git repository.
 Create a file called `.gitlab-ci.yml` with the following content:
+
+
 
 
 `````{tab-set}
