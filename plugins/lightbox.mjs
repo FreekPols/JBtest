@@ -24,39 +24,44 @@ async function render({ el }) {
   const style = document.createElement('style');
   style.id = 'myst-lightbox-theme';
   style.textContent = `
-    /* Default (light mode) */
+  :root {
+    --myst-lightbox-bg: rgba(235, 235, 242, 0.96);
+    --myst-lightbox-color: #111;
+  }
+
+  @media (prefers-color-scheme: dark) {
     :root {
-      --myst-lightbox-bg: rgba(12, 5, 224, 0.96);
-      --myst-lightbox-color: #111;
+      --myst-lightbox-bg: rgba(69, 227, 12, 0.96);
+      --myst-lightbox-color: #10abd6;
     }
+  }
 
-    /* Dark mode */
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --myst-lightbox-bg: rgba(213, 12, 227, 0.96);
-        --myst-lightbox-color: #db0bed;
-      }
-    }
+  html.dark,
+  body.dark,
+  html[data-theme="dark"],
+  body[data-theme="dark"],
+  html[data-mode="dark"],
+  body[data-mode="dark"] {
+    --myst-lightbox-bg: rgba(69, 227, 12, 0.96);
+    --myst-lightbox-color: #10abd6;
+  }
 
-    /* GLightbox container */
-    .glightbox-container .goverlay {
-      background: var(--myst-lightbox-bg) !important;
-    }
+  .glightbox-container .goverlay {
+    background: var(--myst-lightbox-bg) !important;
+  }
 
-    /* Caption / description text */
-    .glightbox-container .gslide-description,
-    .glightbox-container .gdesc,
-    .glightbox-container .gslide-title {
-      color: var(--myst-lightbox-color) !important;
-    }
+  .glightbox-container .gslide-description,
+  .glightbox-container .gdesc,
+  .glightbox-container .gslide-title {
+    color: var(--myst-lightbox-color) !important;
+  }
 
-    /* Navigation buttons */
-    .glightbox-container .gnext,
-    .glightbox-container .gprev,
-    .glightbox-container .gclose {
-      color: var(--myst-lightbox-color) !important;
-    }
-  `;
+  .glightbox-container .gnext,
+  .glightbox-container .gprev,
+  .glightbox-container .gclose {
+    color: var(--myst-lightbox-color) !important;
+  }
+`;
   document.head.appendChild(style);
 }
 
