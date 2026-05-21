@@ -14,6 +14,11 @@ This page has important information for how to do so.
 ```
 
 
+```{figure} IDEA.svg
+
+```
+
+
 ## Instructions
 
 To get setup with GitLab Pages, ensure that your repository is hosted in GitLab and you are in the root of the Git repository.
