@@ -26,7 +26,7 @@ async function render({ el }) {
   style.textContent = `
     /* Default (light mode) */
     :root {
-      --myst-lightbox-bg: rgba(255, 255, 255, 0.96);
+      --myst-lightbox-bg: rgba(12, 5, 224, 0.96);
       --myst-lightbox-color: #111;
     }
 
@@ -34,7 +34,7 @@ async function render({ el }) {
     @media (prefers-color-scheme: dark) {
       :root {
         --myst-lightbox-bg: rgba(213, 12, 227, 0.96);
-        --myst-lightbox-color: #f5f5f5;
+        --myst-lightbox-color: #db0bed;
       }
     }
 
@@ -59,6 +59,7 @@ async function render({ el }) {
   `;
   document.head.appendChild(style);
 }
+
   // Scope to the article body so theme chrome (logos, icons) is excluded.
   const content = document.querySelector('article.article, main') || document.body;
   content.querySelectorAll('img').forEach((img) => {
