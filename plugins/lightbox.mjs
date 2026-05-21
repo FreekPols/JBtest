@@ -31,18 +31,23 @@ async function render({ el }) {
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --myst-lightbox-bg: rgba(69, 227, 12, 0.96);
+      --myst-lightbox-bg: rgba(10, 10, 10, 0.96);
       --myst-lightbox-color: #10abd6;
     }
   }
 
+  /* dark mode white inverter */
+.dark img[src$=".svg"]:not(.no-invert) {
+  filter: invert(1) brightness(1);
+}
+  
   html.dark,
   body.dark,
   html[data-theme="dark"],
   body[data-theme="dark"],
   html[data-mode="dark"],
   body[data-mode="dark"] {
-    --myst-lightbox-bg: rgba(69, 227, 12, 0.96);
+    --myst-lightbox-bg: rgba(21, 21, 21, 0.96);
     --myst-lightbox-color: #10abd6;
   }
 
