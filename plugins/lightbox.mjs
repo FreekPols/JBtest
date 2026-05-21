@@ -33,7 +33,7 @@ async function render({ el }) {
     /* Dark mode */
     @media (prefers-color-scheme: dark) {
       :root {
-        --myst-lightbox-bg: rgba(10, 10, 10, 0.96);
+        --myst-lightbox-bg: rgba(213, 12, 227, 0.96);
         --myst-lightbox-color: #f5f5f5;
       }
     }
