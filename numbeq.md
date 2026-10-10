@@ -13,7 +13,3 @@ $$
 F=ma
 $$
 
-
-Test with hypothesis as anywidget plugin
-```{anywidget} ./plugins/hypothesis.mjs
-```
