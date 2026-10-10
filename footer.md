@@ -1,3 +1,7 @@
+---
+no-page-last-updated: true
+no-hypothesis: true
+---
 % Inspired by https://github.com/jupyter-book/example-landing-pages
 :::::{grid} 3 3 5 5
 :class: outer-grid col-screen
