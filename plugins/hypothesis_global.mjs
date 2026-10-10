@@ -14,7 +14,7 @@ const hypothesisTransform = {
 
     mdast.children.push({
       type: "anywidget",
-      url: "./plugins/hypothesis.mjs",
+      url: "./hypothesis.mjs",
       data: {}
     });
   }
