@@ -1,21 +1,33 @@
+import { randomUUID } from "node:crypto";
+
 const hypothesisTransform = {
   name: "hypothesis-global",
   stage: "document",
 
-  plugin: (_, utils) => (mdast) => {
+  plugin: () => (mdast) => {
     if (!mdast?.children) return;
 
-    // Voorkom dubbele widgets
-    const exists = mdast.children.some(
-      (node) => node.type === "anywidget"
-    );
+    // Zoek ook naar widgets binnen geneste nodes
+    const hasHypothesis = (node) => {
+      if (
+        node.type === "anywidget" &&
+        node.esm?.includes("hypothesis.mjs")
+      ) {
+        return true;
+      }
 
-    if (exists) return;
+      return node.children?.some(hasHypothesis) ?? false;
+    };
 
+    // Voorkom dubbele Hypothesis-widgets
+    if (hasHypothesis(mdast)) return;
+
+    // Voeg Hypothesis toe aan de pagina
     mdast.children.push({
       type: "anywidget",
-      url: "https://cdn.jsdelivr.net/gh/FreekPols/JBtest@main/plugins/hypothesis.mjs",
-      data: {}
+      esm: "./plugins/hypothesis.mjs",
+      model: {},
+      id: randomUUID()
     });
   }
 };
