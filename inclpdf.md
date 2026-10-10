@@ -1,5 +1,6 @@
 ---
 no-update-date: true
+no-hypothesis: true
 ---
 # Include pdf file
 

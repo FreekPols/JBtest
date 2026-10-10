@@ -1,13 +1,63 @@
+
 import { randomUUID } from "node:crypto";
+import { readFileSync } from "node:fs";
+
+// Lees de frontmatter van een Markdown-bestand
+function getFrontmatter(srcPath) {
+  try {
+    const text = readFileSync(srcPath, "utf-8");
+    const match = /^---\r?\n([\s\S]*?)\r?\n---/.exec(text);
+
+    if (!match) return null;
+
+    const data = {};
+
+    match[1].split("\n").forEach(line => {
+      const [key, ...valueParts] = line.split(":");
+
+      if (key && valueParts.length > 0) {
+        const value = valueParts.join(":").trim();
+
+        if (value.toLowerCase() === "false") {
+          data[key.trim()] = false;
+        } else if (value.toLowerCase() === "true") {
+          data[key.trim()] = true;
+        } else {
+          data[key.trim()] = value;
+        }
+      }
+    });
+
+    return data;
+  } catch {
+    return null;
+  }
+}
 
 const hypothesisTransform = {
   name: "hypothesis-global",
   stage: "document",
 
-  plugin: () => (mdast) => {
-    if (!mdast?.children) return;
+  plugin: () => (mdast, file) => {
+    if (!mdast?.children) return mdast;
 
-    // Zoek ook naar widgets binnen geneste nodes
+    // Geen Hypothesis bij PDF/Typst-export
+    const isPDF = process.argv.some(arg =>
+      arg.includes("pdf") || arg.includes("typst")
+    );
+
+    if (isPDF) return mdast;
+
+    // Controleer de frontmatter
+    if (file?.path) {
+      const frontmatter = getFrontmatter(file.path);
+
+      if (frontmatter?.["no-hypothesis"] === true) {
+        return mdast;
+      }
+    }
+
+    // Controleer of Hypothesis al aanwezig is
     const hasHypothesis = (node) => {
       if (
         node.type === "anywidget" &&
@@ -19,16 +69,17 @@ const hypothesisTransform = {
       return node.children?.some(hasHypothesis) ?? false;
     };
 
-    // Voorkom dubbele Hypothesis-widgets
-    if (hasHypothesis(mdast)) return;
+    if (hasHypothesis(mdast)) return mdast;
 
-    // Voeg Hypothesis toe aan de pagina
+    // Voeg Hypothesis automatisch toe
     mdast.children.push({
       type: "anywidget",
       esm: "./plugins/hypothesis.mjs",
       model: {},
       id: randomUUID()
     });
+
+    return mdast;
   }
 };
 
