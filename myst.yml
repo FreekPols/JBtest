@@ -17,7 +17,7 @@ project:
     - https://github.com/TUD-JB-Templates/JB2_plugins/releases/download/wizard-plugin/wizard.mjs
     - plugins/lightbox.mjs
     # - plugins/hypothesis.mjs
-    - plugins/hypothesis-global.mjs
+    - plugins/hypothesis_global.mjs
 
 
   numbering:
