@@ -52,7 +52,14 @@ const hypothesisTransform = {
     if (file?.path) {
       const frontmatter = getFrontmatter(file.path);
 
+      console.log("HYPOTHESIS DEBUG:", {
+        path: file.path,
+        frontmatter,
+        disabled: frontmatter?.["no-hypothesis"] === true
+      });
+
       if (frontmatter?.["no-hypothesis"] === true) {
+        console.log("Hypothesis UIT voor:", file.path);
         return mdast;
       }
     }
@@ -72,12 +79,12 @@ const hypothesisTransform = {
     if (hasHypothesis(mdast)) return mdast;
 
     // Voeg Hypothesis automatisch toe
-    mdast.children.push({
-      type: "anywidget",
-      esm: "./plugins/hypothesis.mjs",
-      model: {},
-      id: randomUUID()
-    });
+    // mdast.children.push({
+    //   type: "anywidget",
+    //   esm: "./plugins/hypothesis.mjs",
+    //   model: {},
+    //   id: randomUUID()
+    // });
 
     return mdast;
   }
