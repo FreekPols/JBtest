@@ -14,7 +14,7 @@ const hypothesisTransform = {
 
     mdast.children.push({
       type: "anywidget",
-      url: "https://raw.githubusercontent.com/FreekPols/JBtest/main/plugins/hypothesis.mjs",
+      url: "https://cdn.jsdelivr.net/gh/FreekPols/JBtest@main/plugins/hypothesis.mjs",
       data: {}
     });
   }
