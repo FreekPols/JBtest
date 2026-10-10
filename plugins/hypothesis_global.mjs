@@ -2,18 +2,19 @@ const hypothesisTransform = {
   name: "hypothesis-global",
   stage: "document",
 
-  plugin: (mdast) => {
-    // Voorkom dubbele injectie
+  plugin: (_, utils) => (mdast) => {
+    if (!mdast?.children) return;
+
+    // Voorkom dubbele widgets
     const exists = mdast.children.some(
-      node => node.type === "anywidget" &&
-              node.url === "plugins/hypothesis.mjs"
+      (node) => node.type === "anywidget"
     );
 
     if (exists) return;
 
     mdast.children.push({
       type: "anywidget",
-      url: "plugins/hypothesis.mjs",
+      url: "./plugins/hypothesis.mjs",
       data: {}
     });
   }

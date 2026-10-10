@@ -11,10 +11,10 @@ project:
   plugins:
     - plugins/typst_eq.mjs
     - plugins/index_num.mjs
-    - https://github.com/TUD-JB-Templates/JB2_plugins/releases/download/intermezzo/intermezzo.mjs
+    # - https://github.com/TUD-JB-Templates/JB2_plugins/releases/download/intermezzo/intermezzo.mjs
     - plugins/page-last-updated.mjs
     - plugins/pyodide.mjs
-    - https://github.com/TUD-JB-Templates/JB2_plugins/releases/download/wizard-plugin/wizard.mjs
+    # - https://github.com/TUD-JB-Templates/JB2_plugins/releases/download/wizard-plugin/wizard.mjs
     - plugins/lightbox.mjs
     # - plugins/hypothesis.mjs
     - plugins/hypothesis_global.mjs
