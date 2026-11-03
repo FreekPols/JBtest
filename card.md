@@ -15,3 +15,5 @@ Some text
 
 ## and a second section
 which should show up if the frontmatter is not breaking the stuff.
+
+test stuff
